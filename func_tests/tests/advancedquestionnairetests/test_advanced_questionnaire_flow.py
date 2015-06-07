@@ -67,7 +67,7 @@ class TestAdvancedQuestionnaireEndToEnd(HeadlessRunnerTest):
             .wait_for_table_data_to_load()
         self.assertEqual(submission_log_page.get_total_number_of_records(), 2)
 
-    @attr('functional_test')
+    @attr('functional_testa')
     def test_should_create_project_when_xlsform_is_uploaded(self):
         self.project_name = random_string()
 

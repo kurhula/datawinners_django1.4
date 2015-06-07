@@ -20,7 +20,8 @@ def navigate_and_verify_web_submission_page_is_loaded(driver, global_navigation_
     return form_element.get_attribute('id'), web_submission_page
 
 def verify_advanced_web_submission_page_is_loaded(driver):
-    form_element = driver.wait_for_element(UI_TEST_TIMEOUT, by_css("form"), True)
+    driver.create_screenshot("before_waiting.png")
+    form_element = driver.wait_for_element(120, by_css("form"), True)
     driver.wait_until_element_is_not_present(UI_TEST_TIMEOUT, by_css(".ajax-loader"))
     return form_element
 
