@@ -77,3 +77,5 @@ xlutils==1.7.1
 xlwt==0.7.5
 xmldict==0.4.1
 xmltodict==0.8.6
+-e git+https://github.com/mangroveorg/mangrove.git@one-question-survey#egg=mangrove
+-e git+https://github.com/mangroveorg/pyxform.git@master#egg=pyxform
