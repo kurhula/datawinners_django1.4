@@ -24,8 +24,9 @@ __all__ = ["DateFilterSpec"]
 import datetime
 from django.conf import settings
 from django import forms
+from django.db import models
 from django.utils.translation import ugettext as _
-from django.contrib.admin.filterspecs import FilterSpec, DateFieldFilterSpec
+from django.contrib.admin.filters import FieldListFilter, DateFieldListFilter
 from django.utils.safestring import mark_safe
 from django.contrib.admin.widgets import AdminDateWidget
 
@@ -43,7 +44,7 @@ class DateForm(forms.Form):
                 self.fields[k].inital = kwargs.get('initial').get(k)
 
 
-class DateFilterSpec(DateFieldFilterSpec):
+class DateFilterSpec(DateFieldListFilter):
 
     def __init__(self, f, request, params, model, model_admin, field_path=None):
         super(DateFilterSpec, self).__init__(f, request, params, model,
@@ -74,4 +75,4 @@ class DateFilterSpec(DateFieldFilterSpec):
         
 
 # register the filter
-FilterSpec.filter_specs.insert(0, (lambda f: hasattr(f, 'date_filter'), DateFilterSpec))
+FieldListFilter.register(lambda f: isinstance(f, models.DateField), DateFieldListFilter)
